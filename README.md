@@ -1,5 +1,5 @@
  Extreme Survival created by maikerumine<br>
- Minetest 0.4.16 mod: "Extreme Survival"<br>
+ Minetest 0.5.0 mod: "Extreme Survival"<br>
  namespace: extreme_survival<br>
  (c) 2014-2017 by: maikerumine<br>
  https://github.com/maikerumine<br>

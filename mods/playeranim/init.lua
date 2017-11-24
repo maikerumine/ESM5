@@ -7,7 +7,8 @@ local vector_equals = vector.equals
 local math_sin = math.sin
 local math_deg = math.deg
 local table_copy = table.copy
-local get_animation = default.player_get_animation
+local get_animation = default.player_get_animation--mt4
+local get_animation = player_api.player_get_animation--mt5
 
 -- Animation alias
 local STAND = 1
@@ -30,20 +31,20 @@ local RLEG = "Leg_Right"
 
 local bone_position = {
 	normal = {
-		[BODY] = vector_new(0, -3.5, 0),
-		[HEAD] = vector_new(0, 6, 0),
+		[BODY] = vector_new(0, 6.5, 0),
+		[HEAD] = vector_new(0, 6.5, 0),
 		[CAPE] = vector_new(0, 6.5, 1.5),
-		[LARM] = vector_new(-3.9, 6.5, 0),
-		[RARM] = vector_new(3.9, 6.5, 0),
+		[LARM] = vector_new(-3, 5.5, 0),
+		[RARM] = vector_new(3, 5.5, 0),
 		[LLEG] = vector_new(-1, 0, 0),
 		[RLEG] = vector_new(1, 0, 0)
 	},
 	armor = {
-		[BODY] = vector_new(0, -3.5, 0),
+		[BODY] = vector_new(0, 6.5, 0),
 		[HEAD] = vector_new(0, 6.75, 0),
 		[CAPE] = vector_new(0, 6.75, 1.5),
-		[LARM] = vector_new(2, 6.5, 0),
-		[RARM] = vector_new(-2, 6.5, 0),
+		[LARM] = vector_new(3, 5.5, 0),
+		[RARM] = vector_new(-3, 5.5, 0),
 		[LLEG] = vector_new(1, 0, 0),
 		[RLEG] = vector_new(-1, 0, 0)
 	}
@@ -54,19 +55,19 @@ local bone_rotation = {
 		[BODY] = vector_new(0, 0, 0),
 		[HEAD] = vector_new(0, 0, 0),
 		[CAPE] = vector_new(0, 0, 180),
-		[LARM] = vector_new(180, 0, 0),
-		[RARM] = vector_new(180, 0, 0),
-		[LLEG] = vector_new(0, 0, 0),
-		[RLEG] = vector_new(0, 0, 0)
+		[LARM] = vector_new(0, 0, -4),
+		[RARM] = vector_new(0, 0, 4),
+		[LLEG] = vector_new(0, 0, -3),
+		[RLEG] = vector_new(0, 0, 3)
 	},
 	armor = {
 		[BODY] = vector_new(0, 0, 0),
 		[HEAD] = vector_new(0, 0, 0),
 		[CAPE] = vector_new(180, 0, 180),
-		[LARM] = vector_new(180, 0, 9),
-		[RARM] = vector_new(180, 0, -9),
-		[LLEG] = vector_new(0, 0, 0),
-		[RLEG] = vector_new(0, 0, 0)
+		[LARM] = vector_new(0, 0, 4),
+		[RARM] = vector_new(0, 0, -4),
+		[LLEG] = vector_new(0, 0, 3),
+		[RLEG] = vector_new(0, 0, -3)
 	}
 }
 
@@ -206,7 +207,8 @@ minetest.register_globalstep(function(dtime)
 	end
 
 	for _, player in ipairs(minetest.get_connected_players()) do
-		local animation = get_animation(player).animation
+		--local animation = get_animation(player).animation--mt4
+		local animation = player_api.get_animation(player).animation--mt5
 
 		if animation == "lay" then -- No head rotate
 			set_animation(player, STAND) -- Reset
@@ -238,3 +240,31 @@ minetest.register_globalstep(function(dtime)
 		end
 	end
 end)
+
+
+--[[
+# playeranim
+Makes the head, and the right arm when you’re mining, face the way you’re facing, similar to Minecraft. Compatible with 3d_armor. Forked from the animplus mod, which was an ugly hack.
+
+The head only turns up and down relative to the body, except it turns slightly to the right/left when you strafe right/left. When you turn the body turns with the head.
+
+Works in multiplayer, I tested it on a local server.
+
+Created by Rui914, this document was written by sloantothebone.
+Updated to Minetest engint 0.5++  by maikerumine
+
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+]]
