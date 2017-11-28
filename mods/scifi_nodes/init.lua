@@ -657,6 +657,7 @@ if xpane == xpane then
 dofile(minetest.get_modpath("scifi_nodes").."/panes.lua")
 end
 dofile(minetest.get_modpath("scifi_nodes").."/doors.lua")
+dofile(minetest.get_modpath("scifi_nodes").."/flowers.lua")
 dofile(minetest.get_modpath("scifi_nodes").."/nodeboxes.lua")
 dofile(minetest.get_modpath("scifi_nodes").."/models.lua")
 dofile(minetest.get_modpath("scifi_nodes").."/flowers.lua")
