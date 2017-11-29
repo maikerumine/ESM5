@@ -851,7 +851,7 @@ mobs:register_arrow("scifi_mobs:blaser", {
    end,
 
    hit_node = function(self, pos, node)
-      mobs:explosion(pos, 1, 1, 1)
+      --mobs:explosion(pos, 1, 1, 1)
    end,
 })
 
@@ -904,7 +904,7 @@ mobs:register_arrow("scifi_mobs:glaser", {
    end,
 
    hit_node = function(self, pos, node)
-      mobs:explosion(pos, 1, 1, 1)
+      --mobs:explosion(pos, 1, 1, 1)
    end,
 })
 
@@ -931,7 +931,7 @@ mobs:register_arrow("scifi_mobs:rlaser", {
    end,
 
    hit_node = function(self, pos, node)
-      mobs:explosion(pos, 1, 1, 1)
+      --mobs:explosion(pos, 1, 1, 1)
    end,
 })
 
@@ -976,7 +976,7 @@ minetest.register_entity("scifi_mobs:bfg_shot", {
 					end
 				end,
 	hit_node = function(self, pos, node)
-      mobs:explosion(pos, 5, 1, 1)
+      --mobs:explosion(pos, 5, 1, 1)
    end,
 })
 
