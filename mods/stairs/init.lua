@@ -1065,9 +1065,73 @@ stairs.register_all("aiden_grass", "es:aiden_grass",
 	"Aiden Grass",
 	stairs.dirt
 )
-
-
+--[[
 --Technic marble / Granite
+stairs.register_all("granite", "technic:granite",
+	grp,
+	{"technic_granite.png"},
+	
+	"Granite Block",	
+	stairs.stone)
+
+stairs.register_all("marble", "technic:marble",
+	grp,
+	{"technic_marble.png"},
+	
+	"Marble Block",
+	stairs.stone)
+
+stairs.register_all("granite_bricks", "technic:granite_bricks",
+	grp,
+	{"technic_granite_bricks.png"},
+	
+	"Granite Bricks Block",
+	stairs.stone)
+	
+stairs.register_all("marble_bricks", "technic:marble_bricks",
+	grp,
+	{"technic_marble_bricks.png"},
+	
+	"Marble Bricks Block",
+	stairs.stone)
+	]]
+	
+	
+	
+--[[
+	
+--Building Blocks Technic
+--Technic marble / Granite
+stairs.register_all("granite", "building_blocks:granite",
+	grp,
+	{"technic_granite.png"},
+	
+	"Granite Block",	
+	stairs.stone)
+
+stairs.register_all("marble", "building_blocks:marble",
+	grp,
+	{"technic_marble.png"},
+	
+	"Marble Block",
+	stairs.stone)
+
+stairs.register_all("granite_bricks", "building_blocks:granite_bricks",
+	grp,
+	{"technic_granite_bricks.png"},
+	
+	"Granite Bricks Block",
+	stairs.stone)
+	
+stairs.register_all("marble_bricks", "building_blocks:marble_bricks",
+	grp,
+	{"technic_marble_bricks.png"},
+	
+	"Marble Bricks Block",
+	stairs.stone)
+
+]]	
+--ES Technic marble / Granite
 stairs.register_all("granite", "es:granite",
 	grp,
 	--{"technic_granite.png"},

@@ -21,7 +21,7 @@ biome_lib:register_generate_plant({
     surface = {
 		"default:dirt_with_grass",
 		"es:strange_grass",
-		"es:aiden_grass",
+		--"es:aiden_grass",
 		"stoneage:grass_with_silex",
 		"sumpf:peat",
 		"sumpf:sumpf"

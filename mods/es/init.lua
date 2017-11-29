@@ -21,7 +21,7 @@ enable_stairsplus = true
 local modpath = minetest.get_modpath("es")
 es.modpath = modpath
 
---dofile(modpath.."/alias.lua")
+dofile(modpath.."/alias.lua")
 dofile(modpath.."/crafting.lua")
 dofile(modpath.."/antigrief.lua")
 dofile(modpath.."/itemdrop.lua")

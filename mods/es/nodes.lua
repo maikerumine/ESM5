@@ -76,7 +76,7 @@ minetest.register_node( "es:granite", {
 	--tiles = { "technic_granite.png" },
 	tiles = { "mcl_core_granite.png" },
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=1, granite=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -85,7 +85,7 @@ minetest.register_node( "es:granite_bricks", {
 	--tiles = { "technic_granite_bricks.png",},
 	tiles = { "mcl_core_granite_smooth.png",},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=1, granite=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -94,7 +94,7 @@ minetest.register_node( "es:marble", {
 	--tiles = { "technic_marble.png" },
 	tiles = { "mcl_core_diorite.png" },
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=1, marble=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -103,7 +103,7 @@ minetest.register_node( "es:marble_bricks", {
 	--tiles = { "technic_marble_bricks.png" },
 	tiles = { "mcl_core_diorite_smooth.png" },
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=1, marble=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 --[[
