@@ -270,6 +270,8 @@ if replace then
 	})
 end
 
+
+--[[
 --==========
 --
 -- Node will be called stairs:slab1<subname>
@@ -302,7 +304,7 @@ function stairs.register_slab1(subname, recipeitem, groups, images, description,
 		},
 	})
 end
-
+]]
 
 
 -- Node will be called stairs:corner_<subname>
@@ -391,7 +393,7 @@ function stairs.register_invcorner(subname, recipeitem, groups, images, descript
 	})
 end
 	
-
+--[[
 -- Node will be called stairs:slope_<subname>
 function stairs.register_slope(subname, recipeitem, groups, images, description, sounds, alpha,light)
 	groups.slab = 1
@@ -442,6 +444,7 @@ function stairs.register_slope(subname, recipeitem, groups, images, description,
 		recipe = {"stairs:slope_" .. subname, "stairs:slope_" .. subname}
 	})
 end
+]]
 --==============================
 
 -- Stair/slab registration function.
@@ -451,7 +454,7 @@ function stairs.register_stair_and_slab(subname, recipeitem,
 		groups, images, desc_stair, desc_slab, sounds)
 	stairs.register_stair(subname, recipeitem, groups, images, desc_stair, sounds, alpha,light)
 	stairs.register_slab(subname, recipeitem, groups, images, desc_slab, sounds, alpha,light)
-	stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha,light)
+	--stairs.register_slab1(subname, recipeitem, groups, images, desc_slab, sounds, alpha,light)
 end
 
 --==========================
@@ -465,10 +468,10 @@ function stairs.register_all(subname, recipeitem, groups, images, desc, sounds, 
 	stairs.register_corner(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
 	str = " Inverted Corner "
 	stairs.register_invcorner(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
-	str = " Slope "
-	stairs.register_slope(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
-	str = " Thin Slab "
-	stairs.register_slab1(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
+	--str = " Slope "
+	--stairs.register_slope(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
+	--str = " Thin Slab "
+	--stairs.register_slab1(subname, recipeitem, groups, images, str .. desc, sounds, alpha,light)
 end
 
 --==========================
