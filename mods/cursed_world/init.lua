@@ -260,14 +260,14 @@ cursed_world.search_better_place_after_forceload = function(parameters)
 
     local some_name = minetest.get_node(test_pos).name;
     local good_places = minetest.find_nodes_in_area(minp, maxp, {"air"});
-    --minetest.chat_send_all("X"..n)
+    minetest.chat_send_all("X"..n)
     --try read again, i got impression, that this may help.
     if some_name == "undefined" and #good_places == 0 and math.random(1, 100) > 33 then
         --i suspecting, that this code never executes
         minetest.after(1.0, cursed_world.search_better_place_after_forceload, {pos, owner, pos_target, test_pos, n});
         return
     end
-    --minetest.chat_send_all("Search..."..n..':'..minetest.get_node(test_pos).name..'?'..#good_places)
+    minetest.chat_send_all("Search..."..n..':'..minetest.get_node(test_pos).name..'?'..#good_places)
     minetest.forceload_free_block(test_pos, true);
 
     if #good_places > 32 and #good_places < 3500 then

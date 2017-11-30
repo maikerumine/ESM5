@@ -78,7 +78,7 @@ minetest.register_craft({
 	output = 'mcl_jukebox:jukebox',
 	recipe = {
 		{'group:wood', 'group:wood', 'group:wood'},
-		{'group:wood', 'default:diamond', 'group:wood'},
+		{'group:wood', 'default:emerald', 'group:wood'},
 		{'group:wood', 'group:wood', 'group:wood'},
 	}
 })

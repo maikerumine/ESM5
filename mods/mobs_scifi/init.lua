@@ -106,7 +106,7 @@ mobs:register_mob("scifi_mobs:facehugger", {
 
 mobs:spawn_specific("scifi_mobs:facehugger", {"default:dirt_with_dry_grass"}, {"default:stone"}, 20, 0, 300, 15000, 2, -100, 11000)
    
-mobs:register_egg("scifi_mobs:facehugger", "Facehugger", "scifi_facehugger_inv.png", 0)
+mobs:register_egg("scifi_mobs:facehugger", "Facehugger", "scifi_facehugger.png", 0)
 
 mobs:register_mob("scifi_mobs:r2", {
 	type = "animal",
