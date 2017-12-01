@@ -69,6 +69,11 @@ local function tpr_send(sender, receiver)
 		return
 	end
 
+	--maikerumine added for esm jail
+	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+		 minetest.chat_send_player(sender, "NOPE!!")
+	 end
+	 
 	minetest.chat_send_player(receiver, sender ..' is requesting to teleport to you. /tpy to accept.')
 	minetest.chat_send_player(sender, 'Teleport request sent! It will time out in '.. timeout_delay ..' seconds.')
 
@@ -93,6 +98,11 @@ local function tphr_send(sender, receiver)
 		return
 	end
 
+		--maikerumine added for esm jail
+	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+		 minetest.chat_send_player(sender, "NOPE!!")
+	 end
+	 
 	minetest.chat_send_player(receiver, sender ..' is requesting that you teleport to them. /tpy to accept; /tpn to deny')
 	minetest.chat_send_player(sender, 'Teleport request sent! It will time out in '.. timeout_delay ..' seconds.')
 
@@ -126,7 +136,12 @@ local function tpc_send(player,coordinates)
 		minetest.chat_send_player(player, "Error: Invalid coordinates.")
 		return nil
 	end
-
+	
+	--maikerumine added for esm jail
+	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+		 minetest.chat_send_player(name, "NOPE!!")
+	 end
+	 
 	local target_coords={x=posx, y=posy, z=posz}
 
 	-- If the area is protected, reject the user's request to teleport to these coordinates
@@ -169,6 +184,7 @@ local function tpr_deny(name)
 		minetest.chat_send_player(tphr_list[name], 'Teleport request denied.')
 		tphr_list[name] = nil
 	end
+
 end
 
 --Teleport Accept Systems

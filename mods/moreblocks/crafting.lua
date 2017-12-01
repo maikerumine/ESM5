@@ -33,25 +33,25 @@ minetest.register_craft({
 	type = "shapeless",
 	recipe = {"default:junglegrass", "default:dirt"},
 })
-
+--[[
 minetest.register_craft({
 	output = "default:dirt_with_grass",
 	type = "shapeless",
 	recipe = {"default:mese", "default:dirt"},
 })
-
+]]
 minetest.register_craft({
 	output = "default:mossycobble",
 	type = "shapeless",
 	recipe = {"default:junglegrass", "default:cobble"},
 })
-
+--[[
 minetest.register_craft({
 	output = "default:mossycobble",
 	type = "shapeless",
 	recipe = {"default:mese_crystal_fragment", "default:cobble"},
 })
-
+]]
 minetest.register_craft({
 	output = "moreblocks:wood_tile 9",
 	recipe = {

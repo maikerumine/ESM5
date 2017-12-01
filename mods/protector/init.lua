@@ -588,7 +588,7 @@ minetest.register_entity("protector:display", {
 		self.timer = self.timer + dtime
 
 		-- remove after 5 seconds
-		if self.timer > 5 then
+		if self.timer > 10 then
 			self.object:remove()
 		end
 	end,
@@ -631,12 +631,12 @@ minetest.register_node("protector:display_node", {
 
 local path = minetest.get_modpath("protector")
 
-dofile(path .. "/doors_chest.lua")
+--dofile(path .. "/doors_chest.lua")
 dofile(path .. "/pvp.lua")
 dofile(path .. "/admin.lua")
-dofile(path .. "/tool.lua")
+--dofile(path .. "/tool.lua")
 dofile(path .. "/hud.lua")
-dofile(path .. "/lucky_block.lua")
+--dofile(path .. "/lucky_block.lua")
 
 
 -- stop mesecon pistons from pushing protectors
