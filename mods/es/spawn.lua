@@ -42,7 +42,7 @@ minetest.register_chatcommand("spawn", {
  minetest.chat_send_player(name, "YOU MUST CLIMB OUT!")
  ]]
  else
- if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820
+ if pos.x<2085 and pos.x>1990 and pos.y>100 and pos.z<1590 and pos.z>1500
  then
  minetest.chat_send_player(name, "YOU MUST DIE TO ESCAPE!")
 

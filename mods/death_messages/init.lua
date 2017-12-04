@@ -238,10 +238,24 @@ minetest.register_on_dieplayer(function(player, hitter)
 		end
 
 --=====================
+--minetest.chat_send_player(player,"Not a valid axis. Valid options are X, Y or Z.")
+	
+	
+	--minetest.chat_send_player(player,string.char(0x1b).."(c@#000000)".."[DEATH COORDINATES] "..string.char(0x1b).."(c@#ffffff)" .. player_name .. string.char(0x1b).."(c@#000000)".." left a corpse full of diamonds here: " ..minetest.pos_to_string(pos) .. string.char(0x1b).."(c@#aaaaaa)".." Come and get them before they are found!!")
 --=====================
-		--minetest.chat_send_all(string.char(0x1b).."(c@#000000)".."[DEATH COORDINATES] "..string.char(0x1b).."(c@#ffffff)" .. player_name .. string.char(0x1b).."(c@#000000)".." left a corpse full of diamonds here: " ..
-		--broken  minetest.chat_send_player(string.char(0x1b).."(c@#000000)".."[YOUR DEATH COORDINATES] "..string.char(0x1b).."(c@#000000)" .. player_name .. string.char(0x1b).."(c@#000000)".." You left a corpse here: " ..
-		--minetest.pos_to_string(pos) .. string.char(0x1b).."(c@#aaaaaa)".." Come and get them before they are found!!")
+		minetest.chat_send_all(string.char(0x1b)..
+		"(c@#000000)"..
+		"[DEATH COORDINATES] "..
+		string.char(0x1b)..
+		"(c@#ffffff)" ..
+		player_name ..
+		string.char(0x1b)..
+		"(c@#FFAADD)"..
+		" died here: " ..
+		minetest.pos_to_string(pos) ..
+		string.char(0x1b)..
+		"(c@#aaaaaa)"..
+		" Bones with some loot will expire in 12 minutes.")
 --=====================
 --=====================
 	end)--after

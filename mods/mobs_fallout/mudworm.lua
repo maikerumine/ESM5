@@ -1,5 +1,5 @@
 --mobs:spawn_specific("mobs_fallout:sandworm", {"default:mud", "default:toxic_water_source"}, {"air"}, 0, 20, 20, 9000, 2, -31000, 31000)
-mobs:register_spawn("mobs_fallout:mudworm", {"default:mud","default:mud_flowing",  "default:toxic_water_source", "default:toxic_water_flowing"}, 9, -1, 9000, 2, 31000)
+mobs:register_spawn("mobs_fallout:mudworm", {"es:mud", "default:mud","default:mud_flowing", "es:toxic_water_source",  "default:toxic_water_source", "es:toxic_water_flowing", "default:toxic_water_flowing"}, 9, -1, 9000, 2, 31000)
 mobs:register_mob("mobs_fallout:mudworm", {
 	type = "monster",
 	group_attack = true,

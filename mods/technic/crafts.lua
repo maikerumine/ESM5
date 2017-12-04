@@ -3,10 +3,12 @@ local mesecons_materials = minetest.get_modpath("mesecons_materials")
 
 -- Remove some recipes
 -- Bronze
+--[[
 minetest.clear_craft({
 	type = "shapeless",
 	output = "default:bronze_ingot"
 })
+]]
 
 -- Accelerator tube
 if pipeworks.enable_accelerator_tube then

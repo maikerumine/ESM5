@@ -78,7 +78,7 @@ mobs:register_mob("mobs_fallout:Mr_White", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Mr. White: Let's go kick some Mob butt!",3)
+		--local_chat(clicker:getpos(),"Mr. White: Let's go kick some Mob butt!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -225,7 +225,7 @@ mobs:register_mob("mobs_fallout:Mr_Black", {
 	end,]]
 	on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Mr. Black: Grrrrrrrrrrrr!",3)
+		--local_chat(clicker:getpos(),"Mr. Black: Grrrrrrrrrrrr!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -369,7 +369,7 @@ mobs:register_mob("mobs_fallout:Mr_Pink", {
 	-- right clicking with cooked meat will give npc more health
 	on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Mr. Pink: My name is Norman, how may I assist?",3)
+		--local_chat(clicker:getpos(),"Mr. Pink: My name is Norman, how may I assist?",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end

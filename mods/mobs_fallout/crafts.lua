@@ -9,16 +9,16 @@
 
 -- raw meat
 minetest.register_craftitem("mobs_fallout:meat_raw", {
-	description = "Raw Meat",
-	inventory_image = "mobs_meat_raw.png",
+	description = "Radiated Raw Meat",
+	inventory_image = "mobs_fallout_meat_raw.png",
 	on_use = minetest.item_eat(3),
 })
 
 -- cooked meat
 minetest.register_craftitem("mobs_fallout:meat", {
-	description = "Meat",
-	inventory_image = "mobs_meat.png",
-	on_use = minetest.item_eat(8),
+	description = "Cooked Radiated Meat",
+	inventory_image = "mobs_fallout_meat.png",
+	on_use = minetest.item_eat(6),
 })
 
 minetest.register_craft({

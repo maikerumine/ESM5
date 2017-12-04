@@ -1583,7 +1583,7 @@ minetest.register_node("basic_machines:light_on", {
 	description = "Light on",
 	tiles = {"light.png"},
 	groups = {cracky=3, mesecon_effector_on = 1},
-	light_source = LIGHT_MAX,
+	light_source = LIGHT_MAX-1,
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos);
 		local list_name = "nodemeta:"..pos.x..','..pos.y..','..pos.z 

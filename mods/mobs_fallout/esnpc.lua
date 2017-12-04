@@ -8,7 +8,12 @@
 --REFERENCE
 --function (mod_name_here):spawn_specific(name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height)
 
-mobs.npc_drops = { "cityscape:canned_food", "shooter:rocket_gun_loaded", "mobs_fallout:meat 4", "shooter:rifle", "default:shovel_steel", "farming:bread", "default:wood","shooter:ammo","default:duct_tape 3", "default:health_kit" }--Added 20151121
+--fix
+--mobs.npc_drops = { "cityscape:canned_food", "shooter:rocket_gun_loaded", "mobs_fallout:meat 4", "shooter:rifle", "default:shovel_steel", "farming:bread", "default:wood","shooter:ammo","default:duct_tape 3", "default:health_kit" }--Added 20151121
+mobs.npc_drops = { "default:pick_steel", "mobs:meat", "default:sword_steel", "default:shovel_steel", "farming:bread", "default:wood" }--Added 20151121
+mobs.npc2_drops = { "default:pick_mese", "mobs:meat", "default:sword_diamond", "default:pick_diamond", "farming:bread", "default:wood" }--Added 20151121
+
+
 
 mobs:register_spawn("mobs_fallout:Bajan", {"default:dirt_with_grass", "cityscape:concrete_broken", "default:stonebrick","default:cobble"}, 20, 10, 11000, 1, 31000)
 mobs:register_mob("mobs_fallout:Bajan", {
@@ -66,7 +71,7 @@ mobs:register_mob("mobs_fallout:Bajan", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Bajan: Let's go kick some Mob butt!",3)
+		--local_chat(clicker:getpos(),"Bajan: Let's go kick some Mob butt!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -206,7 +211,7 @@ mobs:register_mob("mobs_fallout:John", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"John: Let's go grief some monsters!",3)
+		--local_chat(clicker:getpos(),"John: Let's go grief some monsters!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -347,7 +352,7 @@ mobs:register_mob("mobs_fallout:Krock", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Krock: Stop flirting with me!",3)
+		--local_chat(clicker:getpos(),"Krock: Stop flirting with me!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -492,7 +497,7 @@ mobs:register_mob("mobs_fallout:Just_Test_Griefer", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Just_Test_Griefer: I am too whimpy to fight mobs, but I can do my best!",3)
+		--local_chat(clicker:getpos(),"Just_Test_Griefer: I am too whimpy to fight mobs, but I can do my best!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -633,7 +638,7 @@ mobs:register_mob("mobs_fallout:SepiaSam", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Sepia Sam: MESE sword + Monster = My pleasure!",3)
+		--local_chat(clicker:getpos(),"Sepia Sam: MESE sword + Monster = My pleasure!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -773,7 +778,7 @@ mobs:register_mob("mobs_fallout:Hobo", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Hobo: Mobs, let me at 'em, I'll splat 'em!!!",3)
+		--local_chat(clicker:getpos(),"Hobo: Mobs, let me at 'em, I'll splat 'em!!!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -918,7 +923,7 @@ mobs:register_mob("mobs_fallout:Simon", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Simon: I'll code out the very instance of those mobs!",3)
+		--local_chat(clicker:getpos(),"Simon: I'll code out the very instance of those mobs!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -1059,7 +1064,7 @@ mobs:register_mob("mobs_fallout:Infantry_man", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Infantry_man: Minetest is the greatest voxel game ever created!",3)
+		--local_chat(clicker:getpos(),"Infantry_man: Minetest is the greatest voxel game ever created!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end
@@ -1200,7 +1205,7 @@ mobs:register_mob("mobs_fallout:Mage", {
 
 		on_rightclick = function(self, clicker)
 		local item = clicker:get_wielded_item()
-		local_chat(clicker:getpos(),"Mage: All suited up, let's roll out and destroy those creatures!",3)
+		--local_chat(clicker:getpos(),"Mage: All suited up, let's roll out and destroy those creatures!",3)
 		if item:get_name() == "mobs_fallout:meat" or item:get_name() == "farming:bread" then
 			local hp = self.object:get_hp()
 			if hp + 4 > self.hp_max then return end

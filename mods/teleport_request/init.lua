@@ -70,7 +70,7 @@ local function tpr_send(sender, receiver)
 	end
 
 	--maikerumine added for esm jail
-	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+	 if pos.x<2085 and pos.x>1990 and pos.y>100 and pos.z<1590 and pos.z>1500 then
 		 minetest.chat_send_player(sender, "NOPE!!")
 	 end
 	 
@@ -99,7 +99,7 @@ local function tphr_send(sender, receiver)
 	end
 
 		--maikerumine added for esm jail
-	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+	  if pos.x<2085 and pos.x>1990 and pos.y>100 and pos.z<1590 and pos.z>1500 then
 		 minetest.chat_send_player(sender, "NOPE!!")
 	 end
 	 
@@ -138,7 +138,7 @@ local function tpc_send(player,coordinates)
 	end
 	
 	--maikerumine added for esm jail
-	 if pos.x<2085 and pos.x>1971 and pos.y<1598 and pos.z<1438 and pos.z>820 then
+	 if pos.x<2085 and pos.x>1990 and pos.y>100 and pos.z<1590 and pos.z>1500 then
 		 minetest.chat_send_player(name, "NOPE!!")
 	 end
 	 

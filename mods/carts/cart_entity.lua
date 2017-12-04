@@ -56,7 +56,7 @@ function cart_entity:get_staticdata()
 	})
 end
 
-function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, direction)
+function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, direction, name)
 	local pos = self.object:getpos()
 	if not self.railtype then
 		local node = minetest.get_node(pos).name
@@ -120,8 +120,12 @@ function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, 
 	end
 
 	local punch_interval = 1
+	local player = minetest.get_player_by_name(name)
 	if tool_capabilities and tool_capabilities.full_punch_interval then
 		punch_interval = tool_capabilities.full_punch_interval
+		--maikerumine added for es.
+		minetest.sound_play("default_place_node_metal", { gain = 0.35})
+		minetest.chat_send_player(name, "PUNCH PUNCH PUUUUNCH!!!!!")
 	end
 	time_from_last_punch = math.min(time_from_last_punch or punch_interval, punch_interval)
 	local f = 2 * (time_from_last_punch / punch_interval)
