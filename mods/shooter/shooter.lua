@@ -708,7 +708,7 @@ if not singleplayer and SHOOTER_ADMIN_WEAPONS then
 		end
 	end)
 end
---[[
+
 minetest.register_craft({
 	type = "cooking",
 	cooktime = 60,
@@ -798,4 +798,4 @@ minetest.register_craft({
 	output = "default:steel_ingot 2",
 	recipe = "shooter:crossbow",
 })
-]]
+
