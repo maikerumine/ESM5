@@ -33,6 +33,7 @@ minetest.register_node("scifi_nodes:slope_"..name, {
 	paramtype2 = "facedir",
 	light_source = light,
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 	on_place = minetest.rotate_node
 })
 end
@@ -52,8 +53,8 @@ scifi_nodes.register_slope("holes", "Holes", {"scifi_nodes_holes.png",}, 0)
 scifi_nodes.register_slope("pipe", "Pipe", {"scifi_nodes_pipe.png",}, 0)
 scifi_nodes.register_slope("stripes", "Stripes", {"scifi_nodes_stripes.png",}, 0)
 scifi_nodes.register_slope("screen", "Screen", {"scifi_nodes_screen3.png",}, 5)
-scifi_nodes.register_slope("lightstripe", "Lightstripe", {"scifi_nodes_lightstripe.png",}, 20)
-scifi_nodes.register_slope("blight2", "Blue Light 2", {"scifi_nodes_capsule3.png",}, 20)
+scifi_nodes.register_slope("lightstripe", "Lightstripe", {"scifi_nodes_lightstripe.png",}, 13)
+scifi_nodes.register_slope("blight2", "Blue Light 2", {"scifi_nodes_capsule3.png",}, 13)
 scifi_nodes.register_slope("wallpipe", "Alien Pipe", {"scifi_nodes_wallpipe.png",}, 0)
 scifi_nodes.register_slope("alien", "Alien Wall", {"scifi_nodes_alnslp.png",}, 0)
 scifi_nodes.register_slope("purple", "Purple", {"scifi_nodes_purple.png",}, 0)

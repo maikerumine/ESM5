@@ -7,7 +7,7 @@
 local path = minetest.get_modpath("mobs_badplayer")
 
 --npc good
-dofile(path .. "/es_npc_nice.lua") -- 
+--dofile(path .. "/es_npc_nice.lua") -- 
 --npc bad
 dofile(path .. "/es_npc_bad.lua") -- 
 

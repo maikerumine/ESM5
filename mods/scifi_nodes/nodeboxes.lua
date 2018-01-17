@@ -19,6 +19,7 @@ minetest.register_node("scifi_nodes:alienslope", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -49,6 +50,7 @@ minetest.register_node("scifi_nodes:wallpipe", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -301,7 +303,7 @@ minetest.register_node("scifi_nodes:gloshroom", {
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
-	light_source = 50,
+	light_source = 14,
 	walkable = false,
 	buildable_to = true,
 	sunlight_propagates = false,
@@ -444,7 +446,7 @@ minetest.register_node("scifi_nodes:lightbar", {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
-	light_source = 25,
+	light_source = 14,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -458,6 +460,7 @@ minetest.register_node("scifi_nodes:lightbar", {
 		}
 	},
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 	sounds = default.node_sound_glass_defaults()
 })
 --wall switch, currently does not do anything
@@ -521,7 +524,7 @@ minetest.register_node("scifi_nodes:light_dynamic", {
 		fixed = {-0.5, -0.5, -0.5, -0.45, 0.5, 0.5}
 	},
 	paramtype2 = "wallmounted",
-	light_source = 25,
+	light_source = 14,
 	groups = {cracky=1, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults()
 })
@@ -568,7 +571,7 @@ minetest.register_node("scifi_nodes:lightbars", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	use_texture_alpha = true,
-	light_source = 25,
+	light_source = 14,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -589,7 +592,7 @@ tiles = {{
 		animation = {type = "vertical_frames", aspect_w = 16, aspect_h = 16, length = 1.00},
 	}},
 	use_texture_alpha = true,
-	light_source = 15,
+	light_source = 14,
 	drawtype = "nodebox",
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -609,7 +612,7 @@ tiles = {
 		"scifi_nodes_orange.png",
 	},
 	use_texture_alpha = true,
-	light_source = 20,
+	light_source = 14,
 	drawtype = "nodebox",
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -669,6 +672,7 @@ minetest.register_node("scifi_nodes:cover", {
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
+	sounds = default.node_sound_metal_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -678,6 +682,7 @@ minetest.register_node("scifi_nodes:cover", {
 		}
 	},
 	groups = {cracky=1, oddly_breakable_by_hand=1}
+	
 })
 
 minetest.register_node("scifi_nodes:computer", {
@@ -769,6 +774,7 @@ minetest.register_node("scifi_nodes:table", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
+	sounds = default.node_sound_metal_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -865,6 +871,7 @@ minetest.register_node("scifi_nodes:pipen", {
 		}
 	},
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 	on_place = minetest.rotate_node
 })
 
@@ -1147,7 +1154,7 @@ minetest.register_node("scifi_nodes:glassscreen", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	light_source = 15,
+	light_source = 14,
 	sunlight_propagates = true,
 	node_box = {
 		type = "fixed",

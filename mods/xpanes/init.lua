@@ -104,6 +104,7 @@ function xpanes.register_pane(name, def)
 		groups = flatgroups,
 		drop = "xpanes:" .. name .. "_flat",
 		sounds = def.sounds,
+		use_texture_alpha = def.use_texture_alpha or false,
 		node_box = {
 			type = "fixed",
 			fixed = {{-1/2, -1/2, -1/32, 1/2, 1/2, 1/32}},
@@ -128,6 +129,7 @@ function xpanes.register_pane(name, def)
 		groups = groups,
 		drop = "xpanes:" .. name .. "_flat",
 		sounds = def.sounds,
+		use_texture_alpha = def.use_texture_alpha or false,
 		node_box = {
 			type = "connected",
 			fixed = {{-1/32, -1/2, -1/32, 1/32, 1/2, 1/32}},
@@ -159,7 +161,7 @@ xpanes.register_pane("pane", {
 })
 
 xpanes.register_pane("bar", {
-	description = "Iron bar",
+	description = "Iron Bar",
 	textures = {"xpanes_bar.png","xpanes_bar.png","xpanes_bar_top.png"},
 	inventory_image = "xpanes_bar.png",
 	wield_image = "xpanes_bar.png",

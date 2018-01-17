@@ -1033,7 +1033,7 @@ function default.register_biomes(upper_limit)
 		--node_river_water = "",
 		node_riverbed = "default:sand",
 		depth_riverbed = 2,
-		y_min = 5,
+		y_min = 4,
 		y_max = 5,
 		heat_point = 50,
 		humidity_point = 35,
@@ -1054,7 +1054,7 @@ function default.register_biomes(upper_limit)
 		node_riverbed = "default:sand",
 		depth_riverbed = 2,
 		y_min = -112,
-		y_max = 4,
+		y_max = 3,
 		heat_point = 50,
 		humidity_point = 35,
 	})
@@ -1064,7 +1064,7 @@ function default.register_biomes(upper_limit)
 	minetest.register_biome({
 		name = "coniferous_forest",
 		--node_dust = "",
-		node_top = "default:dirt_with_grass",
+		node_top = "default:dirt_with_coniferous_litter",
 		depth_top = 1,
 		node_filler = "default:dirt",
 		depth_filler = 3,
@@ -1095,7 +1095,7 @@ function default.register_biomes(upper_limit)
 		--node_river_water = "",
 		node_riverbed = "default:sand",
 		depth_riverbed = 2,
-		y_min = 5,
+		y_min = 4,
 		y_max = 5,
 		heat_point = 45,
 		humidity_point = 70,
@@ -1116,7 +1116,7 @@ function default.register_biomes(upper_limit)
 		node_riverbed = "default:sand",
 		depth_riverbed = 2,
 		y_min = -112,
-		y_max = 4,
+		y_max = 3,
 		heat_point = 45,
 		humidity_point = 70,
 	})
@@ -1593,6 +1593,7 @@ function default.register_mgv6_decorations()
 		y_min = 1,
 		y_max = 30,
 		decoration = "default:dry_shrub",
+		param2 = 4,
 	})
 end
 
@@ -1613,8 +1614,7 @@ local function register_grass_decoration(offset, scale, length)
 			persist = 0.6
 		},
 		biomes = {"grassland", "grassland_dunes", "deciduous_forest",
-			"coniferous_forest", "coniferous_forest_dunes",
-			"floatland_grassland"},
+			"coniferous_forest_dunes", "floatland_grassland"},
 		y_min = 1,
 		y_max = 31000,
 		decoration = "default:grass_" .. length,
@@ -1638,6 +1638,26 @@ local function register_dry_grass_decoration(offset, scale, length)
 		y_min = 1,
 		y_max = 31000,
 		decoration = "default:dry_grass_" .. length,
+	})
+end
+
+local function register_fern_decoration(seed, length)
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_coniferous_litter"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.2,
+			spread = {x = 100, y = 100, z = 100},
+			seed = seed,
+			octaves = 3,
+			persist = 0.7
+		},
+		biomes = {"coniferous_forest"},
+		y_min = 6,
+		y_max = 31000,
+		decoration = "default:fern_" .. length,
 	})
 end
 
@@ -1718,7 +1738,7 @@ function default.register_decorations()
 
 	minetest.register_decoration({
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
+		place_on = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0.036,
@@ -1737,7 +1757,7 @@ function default.register_decorations()
 
 	minetest.register_decoration({
 		deco_type = "schematic",
-		place_on = {"default:dirt_with_snow", "default:dirt_with_grass"},
+		place_on = {"default:dirt_with_snow", "default:dirt_with_coniferous_litter"},
 		sidelen = 80,
 		noise_params = {
 			offset = 0.0018,
@@ -1961,6 +1981,12 @@ function default.register_decorations()
 	register_dry_grass_decoration(0.07, -0.01, 2)
 	register_dry_grass_decoration(0.09, -0.03, 1)
 
+	-- Ferns
+
+	register_fern_decoration(14936, 3)
+	register_fern_decoration(801,   2)
+	register_fern_decoration(5,     1)
+
 	-- Junglegrass
 
 	minetest.register_decoration({
@@ -1993,6 +2019,7 @@ function default.register_decorations()
 		y_min = 2,
 		y_max = 31000,
 		decoration = "default:dry_shrub",
+		param2 = 4,
 	})
 
 	-- Coral reef

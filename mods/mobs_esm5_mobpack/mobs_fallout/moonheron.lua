@@ -1,5 +1,5 @@
---mobs:spawn_specific("mobs_fallout:moonheron", {"air"}, {"air"},0, 17, 100, 150000, 2, -5610, -3500)
-mobs:register_spawn("mobs_fallout:moonheron", {"air"}, 5, -1, 150000, 2, 100)
+mobs:spawn_specific("mobs_fallout:moonheron", {"air"}, {"air"},0, 17, 100, 150000, 2, 610, 3500)
+--mobs:register_spawn("mobs_fallout:moonheron", {"air"}, 5, -1, 150000, 2, 100)
 mobs:register_mob("mobs_fallout:moonheron", {
 	type = "monster",
 	group_attack = true,

@@ -51,6 +51,7 @@ default:dirt_with_grass_footsteps
 default:dirt_with_dry_grass
 default:dirt_with_snow
 default:dirt_with_rainforest_litter
+default:dirt_with_coniferous_litter
 
 default:sand
 default:desert_sand
@@ -141,6 +142,10 @@ default:dry_grass_2
 default:dry_grass_3
 default:dry_grass_4
 default:dry_grass_5
+
+default:fern_1
+default:fern_2
+default:fern_3
 
 default:bush_stem
 default:bush_leaves
@@ -464,6 +469,21 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 	}),
 })
 
+minetest.register_node("default:dirt_with_coniferous_litter", {
+	description = "Dirt with Coniferous Litter",
+	tiles = {
+		"default_coniferous_litter.png",
+		"default_dirt.png",
+		{name = "default_dirt.png^default_coniferous_litter_side.png",
+			tileable_vertical = false}
+	},
+	groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
+	drop = "default:dirt",
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.4},
+	}),
+})
+
 minetest.register_node("default:sand", {
 	description = "Sand",
 	tiles = {"default_sand.png"},
@@ -667,9 +687,7 @@ minetest.register_node("default:apple", {
 	sounds = default.node_sound_leaves_defaults(),
 
 	after_place_node = function(pos, placer, itemstack)
-		if placer:is_player() then
-			minetest.set_node(pos, {name = "default:apple", param2 = 1})
-		end
+		minetest.set_node(pos, {name = "default:apple", param2 = 1})
 	end,
 })
 
@@ -1165,6 +1183,8 @@ minetest.register_node("default:dry_shrub", {
 	inventory_image = "default_dry_shrub.png",
 	wield_image = "default_dry_shrub.png",
 	paramtype = "light",
+	paramtype2 = "meshoptions",
+	place_param2 = 4,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -1172,7 +1192,7 @@ minetest.register_node("default:dry_shrub", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
 	},
 })
 
@@ -1192,7 +1212,7 @@ minetest.register_node("default:junglegrass", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 1.19, 7 / 16},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
 	},
 })
 
@@ -1296,6 +1316,58 @@ for i = 2, 5 do
 		selection_box = {
 			type = "fixed",
 			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -1 / 16, 6 / 16},
+		},
+	})
+end
+
+
+minetest.register_node("default:fern_1", {
+	description = "Fern",
+	drawtype = "plantlike",
+	waving = 1,
+	tiles = {"default_fern_1.png"},
+	inventory_image = "default_fern_1.png",
+	wield_image = "default_fern_1.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -0.25, 6 / 16},
+	},
+
+	on_place = function(itemstack, placer, pointed_thing)
+		-- place a random fern node
+		local stack = ItemStack("default:fern_" .. math.random(1, 3))
+		local ret = minetest.item_place(stack, placer, pointed_thing)
+		return ItemStack("default:fern_1 " ..
+			itemstack:get_count() - (1 - ret:get_count()))
+	end,
+})
+
+for i = 2, 3 do
+	minetest.register_node("default:fern_" .. i, {
+		description = "Fern",
+		drawtype = "plantlike",
+		waving = 1,
+		visual_scale = 2,
+		tiles = {"default_fern_" .. i .. ".png"},
+		inventory_image = "default_fern_" .. i .. ".png",
+		wield_image = "default_fern_" .. i .. ".png",
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		buildable_to = true,
+		groups = {snappy = 3, flammable = 3, flora = 1, attached_node = 1,
+			not_in_creative_inventory=1},
+		drop = "default:fern_1",
+		sounds = default.node_sound_leaves_defaults(),
+		selection_box = {
+			type = "fixed",
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -0.25, 6 / 16},
 		},
 	})
 end
@@ -1656,6 +1728,10 @@ minetest.register_node("default:river_water_source", {
 	liquid_alternative_flowing = "default:river_water_flowing",
 	liquid_alternative_source = "default:river_water_source",
 	liquid_viscosity = 1,
+	-- Not renewable to avoid horizontal spread of water sources in sloping
+	-- rivers that can cause water to overflow riverbanks and cause floods.
+	-- River water source is instead made renewable by the 'force renew'
+	-- option used in the 'bucket' mod by the river water bucket.
 	liquid_renewable = false,
 	liquid_range = 2,
 	post_effect_color = {a = 103, r = 30, g = 76, b = 90},
@@ -1809,7 +1885,9 @@ minetest.register_node("default:lava_flowing", {
 -- Tools / "Advanced" crafting / Non-"natural"
 --
 
-function default.get_chest_formspec(pos)
+default.chest = {}
+
+function default.chest.get_chest_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," .. pos.z
 	local formspec =
 		"size[8,9]" ..
@@ -1825,7 +1903,7 @@ function default.get_chest_formspec(pos)
 	return formspec
 end
 
-local function chest_lid_obstructed(pos)
+function default.chest.chest_lid_obstructed(pos)
 	local above = {x = pos.x, y = pos.y + 1, z = pos.z}
 	local def = minetest.registered_nodes[minetest.get_node(above).name]
 	-- allow ladders, signs, wallmounted things and torches to not obstruct
@@ -1839,15 +1917,14 @@ local function chest_lid_obstructed(pos)
 	return true
 end
 
-local open_chests = {}
+function default.chest.chest_lid_close(pn)
+	local chest_open_info = default.chest.open_chests[pn]
+	local pos = chest_open_info.pos
+	local sound = chest_open_info.sound
+	local swap = chest_open_info.swap
 
-local function chest_lid_close(pn)
-	local pos = open_chests[pn].pos
-	local sound = open_chests[pn].sound
-	local swap = open_chests[pn].swap
-
-	open_chests[pn] = nil
-	for k, v in pairs(open_chests) do
+	default.chest.open_chests[pn] = nil
+	for k, v in pairs(default.chest.open_chests) do
 		if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
 			return true
 		end
@@ -1859,6 +1936,8 @@ local function chest_lid_close(pn)
 	minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10})
 end
 
+default.chest.open_chests = {}
+
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname ~= "default:chest" then
 		return
@@ -1868,22 +1947,22 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 	end
 	local pn = player:get_player_name()
 
-	if not open_chests[pn] then
+	if not default.chest.open_chests[pn] then
 		return
 	end
 
-	chest_lid_close(pn)
+	default.chest.chest_lid_close(pn)
 	return true
 end)
 
 minetest.register_on_leaveplayer(function(player)
 	local pn = player:get_player_name()
-	if open_chests[pn] then
-		chest_lid_close(pn)
+	if default.chest.open_chests[pn] then
+		default.chest.chest_lid_close(pn)
 	end
 end)
 
-function default.register_chest(name, d)
+function default.chest.register_chest(name, d)
 	local def = table.copy(d)
 	def.drawtype = "mesh"
 	def.visual = "mesh"
@@ -1938,15 +2017,15 @@ function default.register_chest(name, d)
 
 			minetest.sound_play(def.sound_open, {gain = 0.3,
 					pos = pos, max_hear_distance = 10})
-			if not chest_lid_obstructed(pos) then
+			if not default.chest.chest_lid_obstructed(pos) then
 				minetest.swap_node(pos,
 						{ name = "default:" .. name .. "_open",
 						param2 = node.param2 })
 			end
 			minetest.after(0.2, minetest.show_formspec,
 					clicker:get_player_name(),
-					"default:chest", default.get_chest_formspec(pos))
-			open_chests[clicker:get_player_name()] = { pos = pos,
+					"default:chest", default.chest.get_chest_formspec(pos))
+			default.chest.open_chests[clicker:get_player_name()] = { pos = pos,
 					sound = def.sound_close, swap = name }
 		end
 		def.on_blast = function() end
@@ -1967,7 +2046,7 @@ function default.register_chest(name, d)
 			minetest.show_formspec(
 				player:get_player_name(),
 				"default:chest_locked",
-				default.get_chest_formspec(pos)
+				default.chest.get_chest_formspec(pos)
 			)
 		end
 		def.on_skeleton_key_use = function(pos, player, newsecret)
@@ -2005,15 +2084,15 @@ function default.register_chest(name, d)
 		def.on_rightclick = function(pos, node, clicker)
 			minetest.sound_play(def.sound_open, {gain = 0.3, pos = pos,
 					max_hear_distance = 10})
-			if not chest_lid_obstructed(pos) then
+			if not default.chest.chest_lid_obstructed(pos) then
 				minetest.swap_node(pos, {
 						name = "default:" .. name .. "_open",
 						param2 = node.param2 })
 			end
 			minetest.after(0.2, minetest.show_formspec,
 					clicker:get_player_name(),
-					"default:chest", default.get_chest_formspec(pos))
-			open_chests[clicker:get_player_name()] = { pos = pos,
+					"default:chest", default.chest.get_chest_formspec(pos))
+			default.chest.open_chests[clicker:get_player_name()] = { pos = pos,
 					sound = def.sound_close, swap = name }
 		end
 		def.on_blast = function(pos)
@@ -2091,8 +2170,7 @@ function default.register_chest(name, d)
 	})
 end
 
-
-default.register_chest("chest", {
+default.chest.register_chest("chest", {
 	description = "Chest",
 	tiles = {
 		"default_chest_top.png",
@@ -2108,7 +2186,7 @@ default.register_chest("chest", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
 })
 
-default.register_chest("chest_locked", {
+default.chest.register_chest("chest_locked", {
 	description = "Locked Chest",
 	tiles = {
 		"default_chest_top.png",

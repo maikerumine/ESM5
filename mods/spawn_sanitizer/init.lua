@@ -232,7 +232,7 @@ minetest.after(75, function(dtime)
 	for _, pos in ipairs(positions18) do
 		minetest.set_node(pos, {name="air"})
 	end]]
-
+--[[
 	for z1=-27, -16 do
 		minetest.set_node({x=37, y=2, z=z1}, {name="default:rail"})
         minetest.set_node({x=37, y=1, z=z1}, {name="default:cobble"})
@@ -271,7 +271,7 @@ minetest.after(75, function(dtime)
         minetest.set_node({x=3, y=1, z=z1}, {name="default:cobble"})
 	end
 	minetest.add_entity({x=3, y=2, z=0}, "carts:cart")
-
+]]
 	if not spawn_sanitizer.cleaned then
 		spawn_sanitizer.cleaned=true
 		minetest.log("action", "Spawn sanitized!")

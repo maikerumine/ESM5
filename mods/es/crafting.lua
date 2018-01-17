@@ -42,7 +42,7 @@ minetest.clear_craft({
 		--type = "shapeless",
 		output = 'default:bronze_ingot 8',
 		recipe = {
-		{'default:copper_ingot', 'default:coal_lump', 'default:copper_ingot'},
+		{'default:copper_ingot', 'basic_machines:charcoal', 'default:copper_ingot'},
 		{'default:copper_ingot', 'moreores:tin_ingot', 'default:copper_ingot'},
 		{'default:copper_ingot', 'default:copper_ingot', 'default:copper_ingot'},
 		}
@@ -52,7 +52,7 @@ minetest.clear_craft({
 		--type = "shapeless",
 		output = 'default:bronze_ingot 8',
 		recipe = {
-		{'default:copper_ingot', 'default:coal_lump', 'default:copper_ingot'},
+		{'default:copper_ingot', 'basic_machines:charcoal', 'default:copper_ingot'},
 		{'default:copper_ingot', 'default:tin_ingot', 'default:copper_ingot'},
 		{'default:copper_ingot', 'default:copper_ingot', 'default:copper_ingot'},
 		}
