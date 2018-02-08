@@ -199,7 +199,7 @@ if es_climate_thaw == 1 then	--add thawing ice (caution, it will melt most ice i
 	dofile(minetest.get_modpath("es").."/thaw.lua")
 end
 if es_server == 1 then	--server shutdown script and spawning function
-	dofile(minetest.get_modpath("es").."/shutdown.lua")
+	--dofile(minetest.get_modpath("es").."/shutdown.lua")
 	dofile(minetest.get_modpath("es").."/spawn.lua")
 end
 if es_anticheat == 1 then	--add anti cheating.  noclip and fly caught by rnd code
