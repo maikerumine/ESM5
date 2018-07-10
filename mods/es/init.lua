@@ -23,8 +23,12 @@ es.modpath = modpath
 
 dofile(modpath.."/alias.lua")
 
-dofile(modpath.."/biome.lua")
---dofile(modpath.."/oregen.lua")  --moved to biomes
+
+
+--dofile(modpath.."/oregen.lua")  --moved to biomes then switched back due to bug in newer versions of 0.5.0 dev..
+dofile(modpath.."/biome.lua")  --force es_biome
+--dofile(modpath.."/biome_es.lua")  --force es_biome
+
 dofile(modpath.."/nodes.lua")
 dofile(modpath.."/crushingfurnace.lua")
 dofile(modpath.."/crafting.lua")
@@ -35,6 +39,10 @@ dofile(modpath.."/extra.lua")
 dofile(modpath.."/builtin_flowlib.lua")
 dofile(modpath.."/flowlib.lua")
 
+--Portals from grieftest
+dofile(modpath.."/portal.lua")
+dofile(modpath.."/portal2.lua")
+dofile(modpath.."/portal3.lua")
 
 
 
@@ -61,13 +69,19 @@ es_musicmod = 1					#--1 is on 0 is off
 es_skybox_space = 1				#--1 is on 0 is off
 es_hud_clock = 1				#--1 is on 0 is off
 es_invisible_tool = 0			#--1 is on 0 is off
+es_physics = 1			#--1 is on 0 is off
 								#--=============================
 								#--=============================
 ]]
 
 --====================================
 --====================================
-
+local es_physics = tonumber(minetest.settings:get("es_physics"))
+if not es_physics then
+   es_physics = 1
+   minetest.settings:set("es_physics",
+   es_physics)
+end
 
 local es_armor = tonumber(minetest.settings:get("es_armor"))
 if not es_armor then
@@ -168,14 +182,14 @@ if not es_skybox_space then
 end
 
 local es_hud_clock = tonumber(minetest.settings:get("es_hud_clock"))
-if not es_skybox_space then
+if not es_hud_clock then
    es_hud_clock = 1
    minetest.settings:set("es_hud_clock",
    es_hud_clock)
 end
 
 local es_invisible_tool = tonumber(minetest.settings:get("es_invisible_tool"))
-if not es_skybox_space then
+if not es_invisible_tool then
    es_invisible_tool = 0
    minetest.settings:set("es_invisible_tool",
    es_invisible_tool)
@@ -186,6 +200,10 @@ end
 
 --====================================================================
 --====================================================================
+if es_physics == 1 then	--add es physics
+	dofile(modpath.."/physics.lua")
+end
+
 if es_radioactive == 1 then	--add radiation
 	dofile(modpath.."/radiation.lua")
 end
@@ -218,7 +236,7 @@ if es_musicmod == 1 then	--add music for times of day
 	dofile(minetest.get_modpath("es").."/musicmod.lua")
 end
 if es_skybox_space == 1 then	--add space realm and pure dark in caves
-	dofile(minetest.get_modpath("es").."/cavespace.lua")
+	--dofile(minetest.get_modpath("es").."/cavespace.lua")
 end
 if es_hud_clock == 1 then	--add clock to your hud
 	dofile(minetest.get_modpath("es").."/hudclock.lua")

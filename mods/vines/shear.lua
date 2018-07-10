@@ -2,7 +2,7 @@
 local S = plantlife_i18n.gettext
 
 minetest.register_tool("vines:shears", {
-  description = S("Shears"),
+  description = S("Shears For Vines"),
   inventory_image = "vines_shears.png",
   wield_image = "vines_shears.png",
   stack_max = 1,

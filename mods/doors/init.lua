@@ -203,19 +203,14 @@ end
 
 local function can_dig_door(pos, digger)
 	replace_old_owner_information(pos)
-	if default.can_interact_with_node(digger, pos) then
-		return true
-	else
-		minetest.record_protection_violation(pos, digger:get_player_name())
-		return false
-	end
+	return default.can_interact_with_node(digger, pos)
 end
 
 function doors.register(name, def)
 	if not name:find(":") then
 		name = "doors:" .. name
 	end
---[[
+
 	-- replace old doors of this type automatically
 	minetest.register_lbm({
 		name = ":doors:replace_" .. name:gsub(":", "_"),
@@ -250,7 +245,7 @@ function doors.register(name, def)
 				{name = "doors:hidden", param2 = p3})
 		end
 	})
-]]
+
 	minetest.register_craftitem(":" .. name, {
 		description = def.description,
 		inventory_image = def.inventory_image,
@@ -451,7 +446,7 @@ doors.register("door_wood", {
 		inventory_image = "doors_item_wood.png",
 		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 		recipe = {
-			{"group:wood", "group:wood"},
+			{"group:wood", ""},
 			{"group:wood", "group:wood"},
 			{"group:wood", "group:wood"},
 		}
@@ -467,7 +462,7 @@ doors.register("door_steel", {
 		sound_open = "doors_steel_door_open",
 		sound_close = "doors_steel_door_close",
 		recipe = {
-			{"default:steel_ingot", "default:steel_ingot"},
+			{"default:steel_ingot", ""},
 			{"default:steel_ingot", "default:steel_ingot"},
 			{"default:steel_ingot", "default:steel_ingot"},
 		}
@@ -694,7 +689,7 @@ doors.register_trapdoor("doors:trapdoor_steel", {
 minetest.register_craft({
 	output = 'doors:trapdoor 2',
 	recipe = {
-		{'group:wood', 'group:wood', 'group:wood'},
+		{'group:wood', 'group:wood', 'default:stick'},
 		{'group:wood', 'group:wood', 'group:wood'},
 		{'', '', ''},
 	}
@@ -703,8 +698,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'doors:trapdoor_steel',
 	recipe = {
-		{'default:steel_ingot', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:steel_ingot'},
+		{'default:steel_ingot', 'default:steel_ingot', 'default:stick'},
+		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
 	}
 })
 

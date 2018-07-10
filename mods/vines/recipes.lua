@@ -1,5 +1,5 @@
 vines.recipes['rope_block'] = {
-  {'', 'group:wood', ''},
+  {'default:diamondblock', 'group:wood', 'default:diamondblock'},
   {'', 'group:vines', ''},
   {'', 'group:vines', ''}
 }

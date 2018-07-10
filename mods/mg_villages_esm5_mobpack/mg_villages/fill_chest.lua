@@ -88,7 +88,7 @@ ADD_RCC({'bees:honey_comb',                50, 2, 2, beekeeper=1 });
 ADD_RCC({'bees:queen_bee',                 50, 2, 3, beekeeper=1 });
 ADD_RCC({'bees:smoker',                    80, 1, 2, beekeeper=1 });
 ADD_RCC({'bees:wax',                       80, 3, 3, beekeeper=1 });
-
+--[[
 ADD_RCC({'bushes:blackberry',              80, 20,  4, bakery=1 });
 ADD_RCC({'bushes:blackberry_pie_cooked',   80, 12,  4, bakery=1 });
 ADD_RCC({'bushes:blueberry',               80, 20,  4, bakery=1 });
@@ -99,7 +99,7 @@ ADD_RCC({'bushes:raspberry',               80, 20,  4, bakery=1 });
 ADD_RCC({'bushes:raspberry_pie_cooked',    80, 12,  4, bakery=1 });
 ADD_RCC({'bushes:mixed_berry_pie_cooked',  80, 12,  4, bakery=1 });
 ADD_RCC({'bushes:sugar',                   80, 99,  5, bakery=1, shelf=1 });
-
+]]
 ADD_RCC({'carts:cart',                     80,  1,  2, miner=1});
 
 ADD_RCC({'castle:battleaxe',               50,  1,  1, guard=1, forge=1 });
@@ -108,9 +108,9 @@ ADD_RCC({'castle:ropes',                   50,  1,  1, guard=2, chest_private=1,
 ADD_RCC({'castle:shield',                  50,  1,  1, guard=1 });
 ADD_RCC({'castle:shield_2',                50,  1,  1, guard=1 });
 ADD_RCC({'castle:shield_3',                50,  1,  1, guard=1 });
-
+--[[
 ADD_RCC({'cottages:anvil',                 80,  1,  2, forge=1 });
-
+]]
 ADD_RCC({'currency:minegeld',              80, 10,  2, chest_private=1, chest_work=1 }); -- TODO: could be in any chest with a certain chance
 
 ADD_RCC({'farming:hoe_stone',              80,  1,  2, farm_tiny=2, farm_full=2, chest_work=2 });

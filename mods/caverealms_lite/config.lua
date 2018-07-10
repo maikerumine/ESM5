@@ -21,7 +21,7 @@ local function setting(stype, name, default)
 end
 
 --generation settings
-setting("number", "ymin", -33000) --bottom realm limit
+setting("number", "ymin", -6000) --bottom realm limit
 setting("number", "ymax", -1500) --top realm limit
 setting("number", "tcave", 0.75) --cave threshold
 
@@ -45,11 +45,11 @@ setting("number", "flacha", 0.04) --chance of constant flames
 
 --realm limits for Dungeon Masters' Lair
 setting("number", "dm_top", -1400) --upper limit
-setting("number", "dm_bot", -25600) --lower limit
+setting("number", "dm_bot", -5000) --lower limit
 
 --should DMs spawn in DM Lair?
 setting("bool", "dm_spawn", true) 
 
 --Deep cave settings
-setting("number", "deep_cave", -3000) -- upper limit
+setting("number", "deep_cave", -2000) -- upper limit
 

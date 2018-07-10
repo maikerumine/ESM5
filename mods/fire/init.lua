@@ -78,7 +78,18 @@ minetest.register_tool("fire:flint_and_steel", {
 	description = "Flint and Steel",
 	inventory_image = "fire_flint_steel.png",
 	sound = {breaks = "default_tool_breaks"},
-
+	--[[	--nether
+	on_place = function(stack,_, pt)
+		if pt.under and minetest.get_node(pt.under).name == "default:obsidian" then
+			done = make_portal(pt.under)  --broken please fix for y
+			if done and not minetest.setting_getbool("creative_mode") then
+				--stack:take_item()
+				stack:add_wear(1000)
+			end
+		end
+		return stack
+	end,
+	]]
 	on_use = function(itemstack, user, pointed_thing)
 		local sound_pos = pointed_thing.above or user:get_pos()
 		minetest.sound_play(

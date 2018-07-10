@@ -1,0 +1,2 @@
+#    If enabled players are knocked back when hit by mobs or other players
+player_knockback (Player knockback) bool true

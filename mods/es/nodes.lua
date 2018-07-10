@@ -1220,3 +1220,186 @@ minetest.register_abm({
 	end
 })
 ]]
+
+
+--
+-- Misc
+--
+
+--From grieftest and mineclone2
+
+minetest.register_node("es:void", {
+	description = "Void (you hacker you!)",
+	inventory_image = "mcl_core_void.png",
+	wield_image = "mcl_core_void.png",
+	drawtype = "airlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	air_equivalent = true,
+	drop = "",
+	groups = {not_in_creative_inventory=1},
+	light_source = default.LIGHT_MAX, --test only
+})
+
+-- Minetest 0.4 Mod: default
+
+
+
+local default_AMBIENT = 4
+
+minetest.register_node("es:dummy", {
+	description = "Air (you hacker you!)",
+	inventory_image = "unknown_node.png",
+	wield_image = "unknown_node.png",
+	drawtype = "airlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	air_equivalent = true,
+	drop = "",
+	groups = {not_in_creative_inventory=1},
+})
+
+minetest.register_node("es:rack", {
+	description = "Rack",
+	tiles = {"default_rack.png"},
+	is_ground_content = true,
+	--drop = {
+	--	max_items = 1,
+	--	items = {{
+	--		rarity = 3,
+	--		items = {"default:rack"},
+	--	}}
+	--},
+	light_source = default_AMBIENT,
+	groups = {cracky=3,level=0},
+	--stack_max = 64,
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("es:slowsand", {
+	description = "Slow Sand",
+	tiles = {"default_slowsand.png"},
+	is_ground_content = true,
+	light_source = default_AMBIENT,
+	groups = {crumbly=1,level=2,nether =1},
+	--stack_max = 64,
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_gravel_footstep", gain=0.45},
+	}),
+})
+
+minetest.register_node("es:glowstone", {
+	description = "Glowstone",
+	tiles = {"default_glowstone.png"},
+	is_ground_content = true,
+	light_source = 14,
+	--stack_max = 64,
+	drop = {
+		items = {
+			{items = {'default:glowstone_dust'}},
+			{items = {'default:glowstone_dust'}},
+			{items = {'default:glowstone_dust'},rarity=2},
+			{items = {'default:glowstone_dust'},rarity=0},
+		}
+	},
+	--groups = {dig=default.dig.glowstone},
+	groups = {cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("es:nitherbrick", {
+	description = "Nither Brick",
+	tiles = {"default_nitherbrick.png"},
+	groups = {cracky=2,level=2},
+	--stack_max = 64,
+	--light_source = default_AMBIENT-2,
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("es:rack_with_diamond", {
+	description = "Diamond Ore",
+	tiles = {"default_rack.png^default_mineral_diamond.png"},
+	groups = {cracky = 1},
+	drop = "default:diamond",
+	light_source = 10,
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("es:wart", {
+	description = "Wart",
+	drawtype = "plantlike",
+	walkable = false,
+	paramtype = "light",
+	sunlight_propagates = true,
+	tiles = {"default_wart.png^[colorize:#FF0000:150"},
+	groups = {cracky = 1},
+	drop = "es:wart",
+	light_source = 4,
+	groups = {snappy = 3, attached_node = 1},
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name = "default_grass_footstep", gain = 0.4},
+	}),
+	--stack_max = 64,
+})
+-- wart spread and death
+minetest.register_abm({
+	nodenames = {"es:wart"},
+	interval = 10,
+	chance = 20,
+	action = function(pos, node)
+		if minetest.get_node_light(pos, nil) == 15 then
+			minetest.remove_node(pos)
+		end
+		local random = {
+			x = pos.x + math.random(-2,2),
+			y = pos.y + math.random(-1,1),
+			z = pos.z + math.random(-2,2)
+		}
+		local random_node = minetest.get_node_or_nil(random)
+		if not random_node then
+			return
+		end
+		if random_node.name ~= "air" then
+			return
+		end
+		local node_under = minetest.get_node_or_nil({x = random.x,
+			y = random.y - 1, z = random.z})
+		if not node_under then
+			return
+		end
+		if minetest.get_item_group(node_under.name, "nether") ~= 0 and
+				minetest.get_node_light(pos, nil) <= 7 and
+				minetest.get_node_light(random, nil) <= 11 then
+			minetest.set_node(random, {name = node.name})
+		end
+	end
+})
+
+minetest.register_node("es:end_stone", {
+	description = "End Stone",
+	tiles = {"mcl_end_end_stone.png"},
+	--stack_max = 64,
+	groups = {cracky=2, stone = 1},
+	--light_source = default.LIGHT_MAX - 7, --test only
+	sounds = default.node_sound_stone_defaults(),
+})
+
+--Ore
+minetest.register_node("es:quartz_ore", {
+         description = "Quartz Ore",
+ 	 tiles = {"default_rack.png^quartz_ore.png"},
+	 groups = {cracky=3, stone=1},
+	 stack_max = 64,
+	 drop = 'quartz:quartz_crystal',
+	 light_source = 6,  --light_source = NETHER_AMBIENT,
+         sounds = default.node_sound_stone_defaults(),
+})
+

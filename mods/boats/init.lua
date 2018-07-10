@@ -56,8 +56,8 @@ function boat.on_rightclick(self, clicker)
 	if self.driver and clicker == self.driver then
 		self.driver = nil
 		clicker:set_detach()
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand" , 30)
+		player_api.player_attached[name] = false
+		player_api.set_animation(clicker, "stand" , 30)
 		local pos = clicker:getpos()
 		pos = {x = pos.x, y = pos.y + 0.2, z = pos.z}
 		minetest.after(0.1, function()
@@ -74,10 +74,10 @@ function boat.on_rightclick(self, clicker)
 		end
 		self.driver = clicker
 		clicker:set_attach(self.object, "",
-			{x = 0, y = 11, z = -3}, {x = 0, y = 0, z = 0})
-		default.player_attached[name] = true
+			{x = 0.5, y = 1, z = -3}, {x = 0, y = 0, z = 0})
+		player_api.player_attached[name] = true
 		minetest.after(0.2, function()
-			default.player_set_animation(clicker, "sit" , 30)
+			player_api.set_animation(clicker, "sit" , 30)
 		end)
 		clicker:set_look_horizontal(self.object:getyaw())
 	end
@@ -105,7 +105,7 @@ function boat.on_punch(self, puncher)
 	if self.driver and puncher == self.driver then
 		self.driver = nil
 		puncher:set_detach()
-		default.player_attached[puncher:get_player_name()] = false
+		player_api.player_attached[puncher:get_player_name()] = false
 	end
 	if not self.driver then
 		self.removed = true
@@ -230,7 +230,8 @@ minetest.register_craftitem("boats:boat", {
 		local node = minetest.get_node(under)
 		local udef = minetest.registered_nodes[node.name]
 		if udef and udef.on_rightclick and
-				not (placer and placer:get_player_control().sneak) then
+				not (placer and placer:is_player() and
+				placer:get_player_control().sneak) then
 			return udef.on_rightclick(under, node, placer, itemstack,
 				pointed_thing) or itemstack
 		end
@@ -244,9 +245,12 @@ minetest.register_craftitem("boats:boat", {
 		pointed_thing.under.y = pointed_thing.under.y + 0.5
 		boat = minetest.add_entity(pointed_thing.under, "boats:boat")
 		if boat then
-			boat:setyaw(placer:get_look_horizontal())
-			if not (creative and creative.is_enabled_for
-					and creative.is_enabled_for(placer:get_player_name())) then
+			if placer then
+				boat:setyaw(placer:get_look_horizontal())
+			end
+			local player_name = placer and placer:get_player_name() or ""
+			if not (creative and creative.is_enabled_for and
+					creative.is_enabled_for(player_name)) then
 				itemstack:take_item()
 			end
 		end

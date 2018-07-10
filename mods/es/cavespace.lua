@@ -31,7 +31,8 @@ local time = 0
 --minetest.after(1, function()
 minetest.register_globalstep(function(dtime)
 		time = time + dtime
-		if time > 0 then for _, player in ipairs(minetest.get_connected_players()) do
+		--if time > 0 then for _, player in ipairs(minetest.get_connected_players()) do
+		if time > 3 then for _, player in ipairs(minetest.get_connected_players()) do
 		time = 0
 
 		local name = player:get_player_name()
