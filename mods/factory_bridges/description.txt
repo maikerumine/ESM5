@@ -1,1 +1,0 @@
-This mod adds a steel bridges, railings and stairs in Minetest.
